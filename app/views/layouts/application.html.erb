@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Furniture</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="sidebar" >
+
+  <h1>Registration &amp; Login</h1>
+   <hr>Register as a new customer: <br />
+  <%= button_to "Click Here", new_user_path, :method => :get %>
+  <hr>Customer Login:<br /> <br />
+  <%= form_tag sessions_path do %>
+      <div class="field">
+        <%= label_tag :email %><br />
+        <%= text_field_tag :email %>
+      </div>
+      <div class="field">
+        <%= label_tag :password %><br />
+        <%= password_field_tag :password %>
+      </div>
+
+   <% if logged_in? %> You are logged in as:<div id="eaddress">
+      <%= current_user.email %> </div> <br />
+
+      <%= link_to 'Logout', logout_path %>   <br />
+
+  <% else %>
+      <%= button_to "Login", login_path %>
+  <% end %>
+<br /><hr>
+  <% end %>
+    <div id="cart">
+      <% if @cart %>
+          <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+      <%= render @cart %>
+             <% end %>
+         <% end %>
+        <hr>
+
+      </div>
+  </div>
+
+
+| <%= link_to "Home", :controller => "welcome", :action => "home" %> |
+<%= link_to "Product Catalogue", products_path %> |
+<%= link_to "Your Cart", :controller => "carts",:action => "your_cart" %> |
+<%= link_to "Leave Site", :controller => "welcome",:action => "thank_you" %> |<br /><br />
+
+
+<%= yield %>
+
+</body>
+</html>

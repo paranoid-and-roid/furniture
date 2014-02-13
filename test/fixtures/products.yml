@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item: MyString
+  specifications: MyString
+  wood_used: MyString
+  designer: MyString
+  price: 1.5
+  image_url: MyString
+
+two:
+  item: MyString
+  specifications: MyString
+  wood_used: MyString
+  designer: MyString
+  price: 1.5
+  image_url: MyString
